@@ -1,5 +1,11 @@
 //This function is here to get the user's input and make the first letter
 //capital and the rest lowercase.
+
+//Variable to keep track of the player score in the game
+let playerScore = 0;
+//Variable to keep track of the computer score in the game
+let computerScore = 0;
+
 function playerPlay(){
     //Prompt user for their selection and store in a variable playerSelect
     let playerSelect = prompt('Rock, Paper or Scissors?');
@@ -48,47 +54,98 @@ function computerPlay(){
     return selections[randomSelect];
  }
 
-//Get the player's input and store it into the playerSelection variable
-let playerSelection = playerPlay();
-//Get the computer's selection and store it into the computerSelection variable
-let computerSelection = computerPlay();
+//Call the game function to start 5 rounds
+game();
 
- playRound(playerSelection, computerSelection);
+function game(){
+    //Annouce to user in the console it is a 5 round game
+    console.log('Best of 5 wins');
+    //loop the game for 5 rounds
+    for (let i = 0; i < 5; i++){
+        //get the player selection and store in the playerSelection variable
+        let playerSelection = playerPlay();
+        //get the computer selection and store in the computerSelection variable
+        let computerSelection = computerPlay();
+        //play 1 round of the game with the selections as arguements
+        playRound(playerSelection, computerSelection);
+        //if the player score is 3 then the player has won best of 5 rounds
+        if(playerScore == 3){
+            console.log('Player wins');
+            //reset the scores to 0 when a winner has been found so the game function
+            //can be called again without having to refresh the page
+            playerScore = 0;
+            computerScore = 0;
+            //Return to exit the loop so it doesn't do the full 5 rounds if someone
+            //has won
+            return
+        }
+        //if the computer score is 3 then the player has won best of 5 rounds
+        if(computerScore == 3){
+            console.log('Computer wins');
+            //Reset the scores to 0 when a winner has been found so the game function
+            //can be called again without having to refresh the page
+            playerScore = 0;
+            computerScore = 0;
+            //Return to exit the loop so it doesn't do the full 5 rounds if someone
+            //has won
+            return
+        }
+     }
+     //if 5 rounds have been played and no one has 3 points then annouce no one wins.
+     console.log('No one wins best of 5 :(');
+     //Reset the scores to 0 after 5 rounds so the game function can be called again
+     //without having to refresh the page
+     playerScore = 0;
+     computerScore = 0;
+}
 
  function playRound(playerSelection, computerSelection){
      if(playerSelection == 'Rock' && computerSelection == 'Scissors'){
          console.log('Player Selects: ', playerSelection);
          console.log('Computer Selects: ', computerSelection);
          console.log('You win! Rock beats Scissors');
+         playerScore++;
+         console.log(`Player Score:${playerScore} Computer Score:${computerScore}`)
      }
      if(playerSelection == 'Rock' && computerSelection == 'Paper'){
         console.log('Player Selects: ', playerSelection);
         console.log('Computer Selects: ', computerSelection);
         console.log('You Lose! Paper beats Rock');
+        computerScore++;
+        console.log(`Player Score:${playerScore} Computer Score:${computerScore}`)
      }
      if(playerSelection == 'Paper' && computerSelection == 'Rock'){
         console.log('Player Selects: ', playerSelection);
         console.log('Computer Selects: ', computerSelection);
         console.log('You win! Paper beats Rock');
+        playerScore++;
+        console.log(`Player Score:${playerScore} Computer Score:${computerScore}`)
      }
      if(playerSelection == 'Paper' && computerSelection == 'Scissors'){
         console.log('Player Selects: ', playerSelection);
         console.log('Computer Selects: ', computerSelection);
         console.log('You Lose! Scissors beats Paper');
+        computerScore++;
+        console.log(`Player Score:${playerScore} Computer Score:${computerScore}`)
      }
      if(playerSelection == 'Scissors' && computerSelection == 'Paper'){
         console.log('Player Selects: ', playerSelection);
         console.log('Computer Selects: ', computerSelection);
-        console.log('You win! Scissors beats Paper');  
+        console.log('You win! Scissors beats Paper');
+        playerScore++;
+        console.log(`Player Score:${playerScore} Computer Score:${computerScore}`)
      }
      if(playerSelection == 'Scissors' && computerSelection == 'Rock'){
         console.log('Player Selects: ', playerSelection);
         console.log('Computer Selects: ', computerSelection);
-        console.log('You lose! Rock beats Scissors');  
+        console.log('You lose! Rock beats Scissors');
+        computerScore++;
+        console.log(`Player Score:${playerScore} Computer Score:${computerScore}`)  
      }
      if(playerSelection == computerSelection){
         console.log('Player Selects: ', playerSelection);
         console.log('Computer Selects: ', computerSelection);
         console.log('It\'s a tie');
+        console.log(`Player Score:${playerScore} Computer Score:${computerScore}`)
      }
  }
