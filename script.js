@@ -1,6 +1,3 @@
-//This function is here to get the user's input and make the first letter
-//capital and the rest lowercase.
-
 //Variable to keep track of the player score in the game
 let playerScore = 0;
 //Variable to keep track of the computer score in the game
