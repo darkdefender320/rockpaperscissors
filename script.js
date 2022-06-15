@@ -88,8 +88,18 @@ function game(){
             return
         }
      }
-     //if 5 rounds have been played and no one has 3 points then annouce no one wins.
-     console.log('No one wins best of 5 :(');
+     //if 5 rounds have been played and no one has 3 points then annouce a winner based
+     //on who has the most points.
+
+     if(playerScore > computerScore){
+        console.log('Player wins');
+     }
+     else if(computerScore > playerScore){
+        console.log('Computer wins');
+     }
+     else{
+        console.log('No one wins best of 5 :(');
+     }
      //Reset the scores to 0 after 5 rounds so the game function can be called again
      //without having to refresh the page
      playerScore = 0;
