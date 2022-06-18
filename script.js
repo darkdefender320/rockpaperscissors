@@ -9,17 +9,17 @@ const paperButton = document.querySelector('.Paper');
 const scissorsButton = document.querySelector('.Scissors');
 
 //Get the result of computerSelection
-let computerSelection = computerPlay();
+// let computerSelection = computerPlay();
 
 //Play 1 round by clicking on the button
 rockButton.addEventListener('click', (e)=> { 
-        playRound(e.target.classList.value, computerSelection)
+        playRound(e.target.classList.value, computerPlay())
     });
 paperButton.addEventListener('click', (e)=> { 
-        playRound(e.target.classList.value, computerSelection)
+        playRound(e.target.classList.value, computerPlay();)
     });
 scissorsButton.addEventListener('click', (e)=> { 
-        playRound(e.target.classList.value, computerSelection)
+        playRound(e.target.classList.value, computerPlay();)
     });
 
 
@@ -141,4 +141,6 @@ function computerPlay(){
         console.log('It\'s a tie');
         console.log(`Player Score:${playerScore} Computer Score:${computerScore}`)
      }
+     computerScore = 0;
+     playerScore = 0;
  }
