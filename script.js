@@ -7,6 +7,10 @@ let computerScore = 0;
 const rockButton = document.querySelector('.Rock');
 const paperButton = document.querySelector('.Paper');
 const scissorsButton = document.querySelector('.Scissors');
+const showResults = document.querySelector('.Results');
+const showSelections = document.querySelector(' .Selections');
+const showScores = document.querySelector(' .Scores');
+const showWinner = document.querySelector(' .Winner');
 
 //Get the result of computerSelection
 // let computerSelection = computerPlay();
@@ -16,10 +20,10 @@ rockButton.addEventListener('click', (e)=> {
         playRound(e.target.classList.value, computerPlay())
     });
 paperButton.addEventListener('click', (e)=> { 
-        playRound(e.target.classList.value, computerPlay();)
+        playRound(e.target.classList.value, computerPlay())
     });
 scissorsButton.addEventListener('click', (e)=> { 
-        playRound(e.target.classList.value, computerPlay();)
+        playRound(e.target.classList.value, computerPlay())
     });
 
 
@@ -93,54 +97,56 @@ function computerPlay(){
 // }
 
  function playRound(playerSelection, computerSelection){
+      showWinner.textContent = '';
      if(playerSelection == 'Rock' && computerSelection == 'Scissors'){
-         console.log('Player Selects: ', playerSelection);
-         console.log('Computer Selects: ', computerSelection);
-         console.log('You win! Rock beats Scissors');
+         showSelections.textContent = `Player Selects: ${playerSelection} \r\nComputer Selects: ${computerSelection}`
+         showResults.appendChild(showSelections);
          playerScore++;
-         console.log(`Player Score:${playerScore} Computer Score:${computerScore}`)
      }
      if(playerSelection == 'Rock' && computerSelection == 'Paper'){
-        console.log('Player Selects: ', playerSelection);
-        console.log('Computer Selects: ', computerSelection);
-        console.log('You Lose! Paper beats Rock');
-        computerScore++;
-        console.log(`Player Score:${playerScore} Computer Score:${computerScore}`)
+         showSelections.textContent = `Player Selects: ${playerSelection} \r\nComputer Selects: ${computerSelection}`
+         showResults.appendChild(showSelections);
+         computerScore++;
      }
      if(playerSelection == 'Paper' && computerSelection == 'Rock'){
-        console.log('Player Selects: ', playerSelection);
-        console.log('Computer Selects: ', computerSelection);
-        console.log('You win! Paper beats Rock');
-        playerScore++;
-        console.log(`Player Score:${playerScore} Computer Score:${computerScore}`)
+         showSelections.textContent = `Player Selects: ${playerSelection} \r\nComputer Selects: ${computerSelection}`
+         showResults.appendChild(showSelections);
+         playerScore++;
      }
      if(playerSelection == 'Paper' && computerSelection == 'Scissors'){
-        console.log('Player Selects: ', playerSelection);
-        console.log('Computer Selects: ', computerSelection);
-        console.log('You Lose! Scissors beats Paper');
-        computerScore++;
-        console.log(`Player Score:${playerScore} Computer Score:${computerScore}`)
+         showSelections.textContent = `Player Selects: ${playerSelection} \r\nComputer Selects: ${computerSelection}`
+         showResults.appendChild(showSelections);
+         computerScore++;
      }
      if(playerSelection == 'Scissors' && computerSelection == 'Paper'){
-        console.log('Player Selects: ', playerSelection);
-        console.log('Computer Selects: ', computerSelection);
-        console.log('You win! Scissors beats Paper');
-        playerScore++;
-        console.log(`Player Score:${playerScore} Computer Score:${computerScore}`)
+         showSelections.textContent = `Player Selects: ${playerSelection} \r\nComputer Selects: ${computerSelection}`
+         showResults.appendChild(showSelections);
+         playerScore++;
      }
      if(playerSelection == 'Scissors' && computerSelection == 'Rock'){
-        console.log('Player Selects: ', playerSelection);
-        console.log('Computer Selects: ', computerSelection);
-        console.log('You lose! Rock beats Scissors');
-        computerScore++;
-        console.log(`Player Score:${playerScore} Computer Score:${computerScore}`)  
+         showSelections.textContent = `Player Selects: ${playerSelection} \r\nComputer Selects: ${computerSelection}`
+         showResults.appendChild(showSelections);
+         computerScore++;
      }
      if(playerSelection == computerSelection){
-        console.log('Player Selects: ', playerSelection);
-        console.log('Computer Selects: ', computerSelection);
-        console.log('It\'s a tie');
-        console.log(`Player Score:${playerScore} Computer Score:${computerScore}`)
+         showSelections.textContent = `Player Selects: ${playerSelection} \r\nComputer Selects: ${computerSelection}`
+         showResults.appendChild(showSelections);
      }
-     computerScore = 0;
-     playerScore = 0;
+     updateResults();
+ }
+
+ function updateResults(){
+   showSelections.appendChild(showScores);
+   showScores.textContent = `Player Score: ${playerScore} Computer Score: ${computerScore}`
+
+   if(playerScore === 5){
+      showWinner.textContent = `Player Wins by winning 5 rounds`;
+      playerScore = 0;
+      computerScore = 0;
+   }
+   if(computerScore === 5){
+      showWinner.textContent = `Computer Wins by winning 5 rounds`;
+      playerScore = 0;
+      computerScore = 0;
+   }
  }
