@@ -5,13 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">
     <title>Rock Paper Scissors</title>
 </head>
 <body>
     <h1>Rock Paper Scissors</h1>
-    <button class="Rock">Rock</button>
-    <button class="Paper">Paper</button>
-    <button class="Scissors">Scissors</button>
+    <div id="display">
+        <div class="img-container">
+            <img class="images" src="https://github.com/darkdefender320/rockpaperscissors/blob/main/rock.jpg?raw=true" alt="Picture of rock">
+            <button class="Rock">Rock</button>
+        </div>
+    <div class="img-container">
+        <img class="images" src="https://github.com/darkdefender320/rockpaperscissors/blob/main/paper.jpg?raw=true" alt="Picture of paper">
+        <button class="Paper">Paper</button>
+    </div>
+    <div class="img-container">
+        <img class="images" src="https://github.com/darkdefender320/rockpaperscissors/blob/main/scissor.jpg?raw=true" alt="Picture of scissors">
+        <button class="Scissors">Scissors</button>
+    </div>
+</div>
     <div class="Results">
         <p class="Selections" style="white-space: pre;"></p>
         <p class="Scores"></p>
